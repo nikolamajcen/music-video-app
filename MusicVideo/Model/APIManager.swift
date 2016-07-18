@@ -30,9 +30,8 @@ class APIManager {
                             videos.append(entry)
                         }
                         
-                        let i = videos.count
-                        print("iTunes Manager - Total count: \(i)")
-                        print(" ")
+                        print("iTunes Manager - Total count: \(videos.count)")
+                        print("")
                         
                         let priority = DISPATCH_QUEUE_PRIORITY_HIGH
                         dispatch_async(dispatch_get_global_queue(priority, 0), { 
