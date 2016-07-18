@@ -1,26 +1,101 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="p2o-NZ-P6u">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Music Video Table View Controller-->
+        <scene sceneID="LUv-GH-lSD">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MusicVideo" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <tableViewController id="3Jc-VT-suM" customClass="MusicVideoTableViewController" customModule="MusicVideo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="NQX-2F-s6s">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MusicVideoCell" rowHeight="100" id="bRS-iz-C9q" customClass="MusicVideoTableViewCell" customModule="MusicVideo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bRS-iz-C9q" id="Msk-0O-LQN">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="99"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rs0-f8-TBJ">
+                                            <rect key="frame" x="8" y="8" width="140" height="83"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="140" id="CY5-0g-pr0"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="musicTitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57Q-QQ-BI9">
+                                            <rect key="frame" x="156" y="37" width="436" height="54"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rank" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NtZ-xm-gAz">
+                                            <rect key="frame" x="156" y="8" width="32" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="YMC-pd-7Jf"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="NtZ-xm-gAz" firstAttribute="top" secondItem="Rs0-f8-TBJ" secondAttribute="top" id="Cpe-05-oUe"/>
+                                        <constraint firstItem="57Q-QQ-BI9" firstAttribute="bottom" secondItem="Rs0-f8-TBJ" secondAttribute="bottom" id="ECA-yo-Rzo"/>
+                                        <constraint firstItem="57Q-QQ-BI9" firstAttribute="leading" secondItem="NtZ-xm-gAz" secondAttribute="leading" id="H4B-HW-r4O"/>
+                                        <constraint firstItem="Rs0-f8-TBJ" firstAttribute="leading" secondItem="Msk-0O-LQN" secondAttribute="leadingMargin" id="JMW-gE-3EI"/>
+                                        <constraint firstItem="Rs0-f8-TBJ" firstAttribute="bottom" secondItem="Msk-0O-LQN" secondAttribute="bottomMargin" id="fNH-KE-C9J"/>
+                                        <constraint firstItem="57Q-QQ-BI9" firstAttribute="trailing" secondItem="Msk-0O-LQN" secondAttribute="trailingMargin" id="kN1-jm-65N"/>
+                                        <constraint firstItem="57Q-QQ-BI9" firstAttribute="top" secondItem="NtZ-xm-gAz" secondAttribute="bottom" constant="8" symbolic="YES" id="pEh-OC-vRH"/>
+                                        <constraint firstItem="NtZ-xm-gAz" firstAttribute="leading" secondItem="Rs0-f8-TBJ" secondAttribute="trailing" constant="8" symbolic="YES" id="t8R-AW-DYV"/>
+                                        <constraint firstItem="Rs0-f8-TBJ" firstAttribute="top" secondItem="Msk-0O-LQN" secondAttribute="topMargin" id="vpJ-Rq-Gov"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="musicImage" destination="Rs0-f8-TBJ" id="aD3-HP-oe3"/>
+                                    <outlet property="musicTitle" destination="57Q-QQ-BI9" id="bxC-7a-lXu"/>
+                                    <outlet property="rank" destination="NtZ-xm-gAz" id="SHZ-US-I9Y"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="3Jc-VT-suM" id="SX2-xa-IrV"/>
+                            <outlet property="delegate" destination="3Jc-VT-suM" id="FOQ-he-hAL"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="vOI-uz-6TH"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vrh-m6-LNT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1439" y="985"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bQa-mb-nc8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="p2o-NZ-P6u" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KIR-cE-v6M">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" id="d3v-lq-ALi">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="3Jc-VT-suM" kind="relationship" relationship="rootViewController" id="SX0-HZ-2v3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XJF-K5-lrf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="627" y="985"/>
         </scene>
     </scenes>
 </document>

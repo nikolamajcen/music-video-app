@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4F4893801D3CDBF500672153 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F48937F1D3CDBF500672153 /* Reachability.m */; };
+		4F4893821D3D019400672153 /* MusicVideoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4893811D3D019400672153 /* MusicVideoTableViewController.swift */; };
+		4F4893841D3D181300672153 /* MusicVideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4893831D3D181300672153 /* MusicVideoTableViewCell.swift */; };
 		4FACFB541D3C1C5700F626A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FACFB531D3C1C5700F626A1 /* AppDelegate.swift */; };
 		4FACFB561D3C1C5700F626A1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FACFB551D3C1C5700F626A1 /* ViewController.swift */; };
 		4FACFB591D3C1C5700F626A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FACFB571D3C1C5700F626A1 /* Main.storyboard */; };
@@ -41,6 +43,8 @@
 		4F48937D1D3CDBF400672153 /* MusicVideo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MusicVideo-Bridging-Header.h"; sourceTree = "<group>"; };
 		4F48937E1D3CDBF500672153 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		4F48937F1D3CDBF500672153 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		4F4893811D3D019400672153 /* MusicVideoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideoTableViewController.swift; sourceTree = "<group>"; };
+		4F4893831D3D181300672153 /* MusicVideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideoTableViewCell.swift; sourceTree = "<group>"; };
 		4FACFB501D3C1C5700F626A1 /* MusicVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FACFB531D3C1C5700F626A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FACFB551D3C1C5700F626A1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +161,8 @@
 		4FACFB821D3C1EEB00F626A1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4F4893811D3D019400672153 /* MusicVideoTableViewController.swift */,
+				4F4893831D3D181300672153 /* MusicVideoTableViewCell.swift */,
 				4FACFB551D3C1C5700F626A1 /* ViewController.swift */,
 			);
 			path = Controller;
@@ -324,6 +330,8 @@
 				4FACFB861D3C1FBD00F626A1 /* APIManager.swift in Sources */,
 				4FACFB561D3C1C5700F626A1 /* ViewController.swift in Sources */,
 				4FACFB8B1D3C279900F626A1 /* MusicVideo.swift in Sources */,
+				4F4893841D3D181300672153 /* MusicVideoTableViewCell.swift in Sources */,
+				4F4893821D3D019400672153 /* MusicVideoTableViewController.swift in Sources */,
 				4FACFB541D3C1C5700F626A1 /* AppDelegate.swift in Sources */,
 				4F4893801D3CDBF500672153 /* Reachability.m in Sources */,
 				4FACFB891D3C272300F626A1 /* Constants.swift in Sources */,
