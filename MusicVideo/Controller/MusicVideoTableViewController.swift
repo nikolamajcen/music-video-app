@@ -14,13 +14,16 @@ class MusicVideoTableViewController: UITableViewController {
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "ReachStatusChanged", object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIContentSizeCategoryDidChangeNotification, object: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.reachabilityStatusChanged),
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reachabilityStatusChanged),
                                                          name: "ReachStatusChanged", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(preferredFontChange),
+                                                         name: UIContentSizeCategoryDidChangeNotification, object: nil)
         reachabilityStatusChanged()
     }
     
@@ -70,8 +73,13 @@ class MusicVideoTableViewController: UITableViewController {
         }
     }
     
+    func preferredFontChange() {
+        print("Changed font")
+    }
+    
     private struct storyboard {
         static let musicVideoReuseIdentifier = "MusicVideoCell"
+        static let musicVideoDetailSegueIdentifier = "MusicVideoDetailSegue"
     }
 
     
@@ -89,4 +97,17 @@ class MusicVideoTableViewController: UITableViewController {
         cell.video = videos[indexPath.row]
         return cell
     }
+    
+    // MARK - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == storyboard.musicVideoDetailSegueIdentifier {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let video = videos[indexPath.row]
+                let destionationViewController = segue.destinationViewController as! MusicVideoDetailViewController
+                destionationViewController.video = video
+            }
+        }
+    }
+    
 }
