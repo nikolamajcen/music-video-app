@@ -79,6 +79,12 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="vOI-uz-6TH"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="bnr-1p-KTD">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh:" destination="3Jc-VT-suM" eventType="valueChanged" id="gEi-SB-Kve"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vrh-m6-LNT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -392,6 +398,9 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="za9-jA-dc2"/>
                         <barButtonItem systemItem="action" id="myy-Df-C4d">
                             <color key="tintColor" red="0.77972756409999999" green="0.036813174919999997" blue="0.039493595960000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="socialMedia:" destination="LNl-KE-rQa" id="gTw-du-S3l"/>
+                            </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <connections>

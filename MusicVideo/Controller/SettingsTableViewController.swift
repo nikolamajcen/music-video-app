@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class SettingsTableViewController: UITableViewController {
 
@@ -39,6 +40,22 @@ class SettingsTableViewController: UITableViewController {
             let value = NSUserDefaults.standardUserDefaults().objectForKey("APICount") as! Int
             APICount.text = "\(value)"
             sliderCount.value = Float(value)
+        } else {
+            sliderCount.value = 10.0
+            APICount.text = "\(Int(sliderCount.value))"
+        }
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 0 && indexPath.row == 1 {
+            let mailComposeViewController = configureMail()
+            
+            if MFMailComposeViewController.canSendMail() {
+                presentViewController(mailComposeViewController, animated: true, completion: nil)
+            } else {
+                mailAlert()
+            }
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
     }
     
@@ -63,5 +80,42 @@ class SettingsTableViewController: UITableViewController {
         securityDisplay.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
         bestImageQualityDisplay.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
         APICount.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+    }
+}
+
+extension SettingsTableViewController: MFMailComposeViewControllerDelegate {
+    
+    private func configureMail() -> MFMailComposeViewController {
+        let mailComposeViewController = MFMailComposeViewController()
+        mailComposeViewController.mailComposeDelegate = self
+        mailComposeViewController.setToRecipients(["user@example.com"])
+        mailComposeViewController.setSubject("Music Video Application Feedback")
+        mailComposeViewController.setMessageBody("Enter feedback below: ", isHTML: false)
+        return mailComposeViewController
+    }
+    
+    private func mailAlert() {
+        let alertController = UIAlertController(title: "No e-email account",
+                                                message: "No e-mail account for this iPhone. Please setup account.",
+                                                preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+        alertController.addAction(okAction)
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        switch result.rawValue {
+        case MFMailComposeResultCancelled.rawValue:
+            print("Mail canceled.")
+        case MFMailComposeResultSaved.rawValue:
+            print("Mail saved.")
+        case MFMailComposeResultSent.rawValue:
+            print("Mail sent.")
+        case MFMailComposeResultFailed.rawValue:
+            print("Mail failed.")
+        default:
+            print("Unknown issue.")
+        }
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }

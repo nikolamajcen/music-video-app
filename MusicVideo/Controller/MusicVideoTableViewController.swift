@@ -11,6 +11,7 @@ import UIKit
 class MusicVideoTableViewController: UITableViewController {
     
     var videos = [Videos]()
+    var limit = 10
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "ReachStatusChanged", object: nil)
@@ -20,20 +21,47 @@ class MusicVideoTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reachabilityStatusChanged),
-                                                         name: "ReachStatusChanged", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: nil,
-                                                         name: UIContentSizeCategoryDidChangeNotification, object: nil)
+        NSNotificationCenter
+            .defaultCenter()
+            .addObserver(self,
+                         selector: #selector(reachabilityStatusChanged),
+                         name: "ReachStatusChanged", object: nil)
+        NSNotificationCenter
+            .defaultCenter()
+            .addObserver(self, selector: nil,
+                         name: UIContentSizeCategoryDidChangeNotification, object: nil)
         reachabilityStatusChanged()
     }
     
+    @IBAction func refresh(sender: UIRefreshControl) {
+        refreshControl?.endRefreshing()
+        runAPI()
+    }
+    
+    
+    func getAPICount() {
+        if NSUserDefaults.standardUserDefaults().objectForKey("APICount") != nil {
+            let value = NSUserDefaults.standardUserDefaults().objectForKey("APICount") as! Int
+            limit = value
+        }
+        
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "E, dd MMM yyyy HH:mm:ss"
+        let refreshDate = formatter.stringFromDate(NSDate())
+        
+        refreshControl?.attributedTitle = NSAttributedString(string: "\(refreshDate)")
+    }
+    
     func runAPI() {
+        getAPICount()
         let api = APIManager()
-        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=200/json", completion: didLoadData)
+        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=\(limit)/json", completion: didLoadData)
     }
     
     func didLoadData(videos: [Videos]) {
         self.videos = videos
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.redColor()]
+        title = "The iTunes Top \(limit) Music Videos"
         tableView.reloadData()
     }
     
