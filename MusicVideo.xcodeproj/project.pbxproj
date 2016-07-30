@@ -11,6 +11,7 @@
 		4F4893821D3D019400672153 /* MusicVideoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4893811D3D019400672153 /* MusicVideoTableViewController.swift */; };
 		4F4893841D3D181300672153 /* MusicVideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4893831D3D181300672153 /* MusicVideoTableViewCell.swift */; };
 		4F4A19241D4CAC0000C9B53C /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4A19231D4CAC0000C9B53C /* SettingsTableViewController.swift */; };
+		4F4A19261D4D129000C9B53C /* JsonDataExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4A19251D4D129000C9B53C /* JsonDataExtractor.swift */; };
 		4F98A7861D4B786800BC0F19 /* MusicVideoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F98A7851D4B786800BC0F19 /* MusicVideoDetailViewController.swift */; };
 		4FACFB541D3C1C5700F626A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FACFB531D3C1C5700F626A1 /* AppDelegate.swift */; };
 		4FACFB591D3C1C5700F626A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FACFB571D3C1C5700F626A1 /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 		4F4893811D3D019400672153 /* MusicVideoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideoTableViewController.swift; sourceTree = "<group>"; };
 		4F4893831D3D181300672153 /* MusicVideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideoTableViewCell.swift; sourceTree = "<group>"; };
 		4F4A19231D4CAC0000C9B53C /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		4F4A19251D4D129000C9B53C /* JsonDataExtractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonDataExtractor.swift; sourceTree = "<group>"; };
 		4F98A7851D4B786800BC0F19 /* MusicVideoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideoDetailViewController.swift; sourceTree = "<group>"; };
 		4FACFB501D3C1C5700F626A1 /* MusicVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FACFB531D3C1C5700F626A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				4FACFB851D3C1FBD00F626A1 /* APIManager.swift */,
+				4F4A19251D4D129000C9B53C /* JsonDataExtractor.swift */,
 				4FACFB8A1D3C279900F626A1 /* MusicVideo.swift */,
 			);
 			path = Model;
@@ -163,9 +166,9 @@
 		4FACFB821D3C1EEB00F626A1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4F98A7851D4B786800BC0F19 /* MusicVideoDetailViewController.swift */,
 				4F4893811D3D019400672153 /* MusicVideoTableViewController.swift */,
 				4F4893831D3D181300672153 /* MusicVideoTableViewCell.swift */,
-				4F98A7851D4B786800BC0F19 /* MusicVideoDetailViewController.swift */,
 				4F4A19231D4CAC0000C9B53C /* SettingsTableViewController.swift */,
 			);
 			path = Controller;
@@ -338,6 +341,7 @@
 				4F4893801D3CDBF500672153 /* Reachability.m in Sources */,
 				4FACFB891D3C272300F626A1 /* Constants.swift in Sources */,
 				4F98A7861D4B786800BC0F19 /* MusicVideoDetailViewController.swift in Sources */,
+				4F4A19261D4D129000C9B53C /* JsonDataExtractor.swift in Sources */,
 				4F4A19241D4CAC0000C9B53C /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

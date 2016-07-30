@@ -19,7 +19,7 @@ class MusicVideoDetailViewController: UIViewController {
     @IBOutlet weak var vPrice: UILabel!
     @IBOutlet weak var vRights: UILabel!
     
-    var video: Videos!
+    var video: Video!
     var securitySwitch: Bool = false
     
     deinit {

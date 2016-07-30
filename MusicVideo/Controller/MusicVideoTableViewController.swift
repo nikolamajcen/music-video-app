@@ -10,8 +10,8 @@ import UIKit
 
 class MusicVideoTableViewController: UITableViewController {
     
-    var videos = [Videos]()
-    var filterSearch = [Videos]()
+    var videos = [Video]()
+    var filterSearch = [Video]()
     let resultSearchController = UISearchController(searchResultsController: nil)
     var limit = 10
     
@@ -63,7 +63,7 @@ class MusicVideoTableViewController: UITableViewController {
         api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=\(limit)/json", completion: didLoadData)
     }
     
-    func didLoadData(videos: [Videos]) {
+    func didLoadData(videos: [Video]) {
         self.videos = videos
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.redColor()]
         title = "The iTunes Top \(limit) Music Videos"
@@ -148,7 +148,7 @@ class MusicVideoTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == storyboard.musicVideoDetailSegueIdentifier {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let video: Videos
+                let video: Video
                 if resultSearchController.active == true {
                     video = filterSearch[indexPath.row]
                 } else {

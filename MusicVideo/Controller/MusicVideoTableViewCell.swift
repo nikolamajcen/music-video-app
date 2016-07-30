@@ -14,7 +14,7 @@ class MusicVideoTableViewCell: UITableViewCell {
     @IBOutlet weak var rank: UILabel!
     @IBOutlet weak var musicTitle: UILabel!
     
-    var video: Videos? {
+    var video: Video? {
         didSet {
             updateCell()
         }
@@ -33,7 +33,7 @@ class MusicVideoTableViewCell: UITableViewCell {
         }
     }
     
-    private func getVideoImage(video: Videos, imageView: UIImageView) {
+    private func getVideoImage(video: Video, imageView: UIImageView) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             let data = NSData(contentsOfURL: NSURL(string: video.vImageUrl)!)
             
