@@ -11,6 +11,8 @@ import UIKit
 class MusicVideoTableViewController: UITableViewController {
     
     var videos = [Videos]()
+    var filterSearch = [Videos]()
+    let resultSearchController = UISearchController(searchResultsController: nil)
     var limit = 10
     
     deinit {
@@ -35,7 +37,11 @@ class MusicVideoTableViewController: UITableViewController {
     
     @IBAction func refresh(sender: UIRefreshControl) {
         refreshControl?.endRefreshing()
-        runAPI()
+        if resultSearchController.active == true {
+            refreshControl?.attributedTitle = NSAttributedString(string: "Refresh is not allowed here.")
+        } else {
+            runAPI()
+        }
     }
     
     
@@ -48,7 +54,6 @@ class MusicVideoTableViewController: UITableViewController {
         let formatter = NSDateFormatter()
         formatter.dateFormat = "E, dd MMM yyyy HH:mm:ss"
         let refreshDate = formatter.stringFromDate(NSDate())
-        
         refreshControl?.attributedTitle = NSAttributedString(string: "\(refreshDate)")
     }
     
@@ -62,6 +67,14 @@ class MusicVideoTableViewController: UITableViewController {
         self.videos = videos
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.redColor()]
         title = "The iTunes Top \(limit) Music Videos"
+        
+        definesPresentationContext = true
+        resultSearchController.searchResultsUpdater = self
+        resultSearchController.dimsBackgroundDuringPresentation = false
+        resultSearchController.searchBar.placeholder = "Search for Artist, Name, Rank"
+        resultSearchController.searchBar.searchBarStyle = .Prominent
+        tableView.tableHeaderView = resultSearchController.searchBar
+        
         tableView.reloadData()
     }
     
@@ -112,13 +125,21 @@ class MusicVideoTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if resultSearchController.active == true {
+            return filterSearch.count
+        }
         return videos.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(storyboard.musicVideoReuseIdentifier, forIndexPath: indexPath)
             as! MusicVideoTableViewCell
-        cell.video = videos[indexPath.row]
+        
+        if resultSearchController.active == true {
+            cell.video = filterSearch[indexPath.row]
+        } else {
+            cell.video = videos[indexPath.row]
+        }
         return cell
     }
     
@@ -127,11 +148,32 @@ class MusicVideoTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == storyboard.musicVideoDetailSegueIdentifier {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let video = videos[indexPath.row]
+                let video: Videos
+                if resultSearchController.active == true {
+                    video = filterSearch[indexPath.row]
+                } else {
+                    video = videos[indexPath.row]
+                }
                 let destionationViewController = segue.destinationViewController as! MusicVideoDetailViewController
                 destionationViewController.video = video
             }
         }
     }
+}
+
+extension MusicVideoTableViewController: UISearchResultsUpdating {
     
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        searchController.searchBar.text?.lowercaseString
+        filterSearch(searchController.searchBar.text!)
+    }
+    
+    private func filterSearch(searchText: String) {
+        filterSearch = videos.filter { videos in
+            return videos.vArtist.lowercaseString.containsString(searchText.lowercaseString)
+                || videos.vName.lowercaseString.containsString(searchText.lowercaseString)
+                || "\(videos.vRank)".lowercaseString.containsString(searchText.lowercaseString)
+        }
+        tableView.reloadData()
+    }
 }
