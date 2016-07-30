@@ -22,7 +22,7 @@ class MusicVideoTableViewController: UITableViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reachabilityStatusChanged),
                                                          name: "ReachStatusChanged", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(preferredFontChange),
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: nil,
                                                          name: UIContentSizeCategoryDidChangeNotification, object: nil)
         reachabilityStatusChanged()
     }
@@ -71,10 +71,6 @@ class MusicVideoTableViewController: UITableViewController {
                 print("Do not refresh API")
             }
         }
-    }
-    
-    func preferredFontChange() {
-        print("Changed font")
     }
     
     private struct storyboard {

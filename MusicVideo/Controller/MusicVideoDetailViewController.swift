@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class MusicVideoDetailViewController: UIViewController {
 
@@ -45,5 +47,15 @@ class MusicVideoDetailViewController: UIViewController {
         vGenre.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
         vPrice.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
         vRights.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+    }
+    
+    @IBAction func playVideo(sender: UIBarButtonItem) {
+        let url = NSURL(string: video.vVideoUrl)
+        let player = AVPlayer(URL: url!)
+        let playerViewController = AVPlayerViewController()
+        playerViewController.player = player
+        presentViewController(playerViewController, animated: true) { 
+            playerViewController.player?.play()
+        }
     }
 }
